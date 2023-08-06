@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mark 2000 Locations on Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+  <div id="map" style="height: 800px;"></div>
+  <!-- <script src="script.js"></script> -->
+  <script>
+    const locations = [
+    { lat: 19.1221971, lng: 72.8389506 },
+  ];
+  
+  // Initialize the map
+  const map = L.map('map').setView([24.56605978585185, 73.68916340809518], 6); // Adjust the zoom level as needed
+  
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+  
+  // Loop through the locations array and add markers to the map
+  for (let i = 0; i < locations.length; i++) {
+    const location = locations[i];
+    L.marker([location.lat, location.lng]).addTo(map)
+      .bindPopup(`Location ${i + 1}`)
+      .openPopup();
+  }
+  </script>
+</body>
+</html>
